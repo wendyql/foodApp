@@ -1,0 +1,61 @@
+<view class="container">
+    <!-- 收货地址 -->
+    <view class="address-container" wx:if="{{address.detailAddress && address.receiveName && address.receiveMobile}}" bindtap="bindTapAddress">
+        <view class="receiver">
+            <view>
+                <text>收货人：{{address.receiveName}}</text>
+            </view>
+            <view>
+                <text>{{address.receiveMobile}}</text>
+            </view>
+        </view>
+        <view class="address">
+            <text>
+                {{address.currentProvinceCityCounty}} {{address.detailAddress}}
+            </text>
+        </view>
+    </view>
+    <view wx:else bindtap="bindTapAddress" class="addr">
+        <button class="button" type='primary'>填写收货地址</button>
+    </view>
+
+    <!--购物车列表-->
+    <view class="items-container">
+        <block wx:for="{{cartLists}}" wx:key>
+            <view class="item" >
+                <view class="image">
+                    <image class="head-img" src="{{item.picture}}" mode="aspectFit"  catchtap="onDeleteHandeler" data-index="{{index}}"></image>
+                </view>
+                <view class="item-right">
+                    <view class="title"  catchtap="onDeleteHandeler" data-index="{{index}}">
+                        <text>{{item.productName}}</text>
+                    </view>
+                    <view class="numbers">
+                        <view>
+                            <text class="price"  catchtap="onDeleteHandeler" data-index="{{index}}">
+                                ¥{{item.price}}
+                            </text>
+                        </view>
+                        <view class="quantity">
+                            <view class="op"  catchtap="minusQuantity" data-id="{{item.id}}">
+                                <text class="text">-</text>
+                            </view>
+                            <view class="number">
+                                <input class="input" value="{{item.number}}" bindinput="bindChangeQuantity" data-id="{{item.id}}"></input>
+                            </view>
+                            <view class="op"  catchtap="addQuantity" data-id="{{item.id}}">
+                                <text class="text">+</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="billing-btn">
+        <view class="total">
+            <view>总计：¥{{amount}}元</view>
+        </view>
+        <button class="button" type='warn' bindtap="bindBilling">去支付</button>
+    </view>
+</view>

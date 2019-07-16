@@ -1,0 +1,18 @@
+ <view class='orderItem'>
+     <view class='orderItem__containner'>
+         <view class='orderItem__picContainner'>
+             <image alt='' class='orderItem__pic' src='{{picture}}' />
+         </view>
+         <view class='orderItem__content'>
+             <view class='orderItem__product'>{{product}}</view>
+             <view class='orderItem__shop'>{{shop}}</view>
+             <view class='orderItem__detail'>
+                 <view class='orderItem__price'>￥{{price}}</view>
+                 <view class='orderItem__btn'>
+                     <button class='orderItem__btn--gray'  wx:if="{{ifCommented}}">已评价</button>
+                     <button class='orderItem__btn--red'  catch:tap="_commentEvent" wx:else>待评价</button>
+                 </view>
+             </view>
+         </view>
+     </view>
+ </view>

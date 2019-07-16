@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "OrderItem":"/components/OderItem/OrderItem"
+  },
+  "navigationBarTitleText": "商品",
+  "enablePullDownRefresh": true
+}
